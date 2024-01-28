@@ -1,0 +1,23 @@
+
+FUPX
+https://www.pazera-software.com/products/free-upx/
+
+================================================================================
+Tips
+
+  1. All language files must be placed in the "lang" directory.
+
+  2. Encoding of language files: UTF-8 with BOM.
+
+  3. The current translation can be changed in the Options window (F12).
+
+  4. To reload the translation from the currently selected language file, press Ctrl+Shift+F12
+
+  5. Closing the program by pressing Esc: in the configuration file "fupx.ini", in the [MAIN] section add line: EscExit=1
+
+================================================================================
+
+
+Version 3.1 -> 3.2
+
+No changes

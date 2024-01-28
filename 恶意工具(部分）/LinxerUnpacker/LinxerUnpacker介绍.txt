@@ -1,0 +1,120 @@
+=================================================================
+
+这个小工具是完全基于虚拟机的，脱壳过程中，除了yp壳的解密API直接定位到系统API上去了外，待脱程序的执行完全不直接依赖win系统，
+因此，对系统来说,没有什么安全威胁,可能一些玩毒弄马的朋友会更喜欢些.
+
+本来是打算,逐渐引入多线程,多进程的.但,由于没有操作系统的支持,我是怕了,很多都像是体力活,不打算再继续写下去了.目前脱壳效果也还可以,
+我试验过255种壳(当然像UPX这种,我试验的小版本也在里面啦),都能干掉(绝大多数是压缩壳),不知道在你那里会怎么样,希望一切都好吧:)
+
+说下,这个工具的工作原理,它的壳特征和编译器特征保存在PEid_Sign.txt里面,呵呵,借鉴了很多高人的特征哈,如果识别不准确,你可以自己动手
+
+能识别出来的壳(我把它称作已知壳),基本上都有对应的脱壳函数,用壳特征脱壳,可以脱壳,对于一些不好特殊的壳你可以用OEP侦测来脱壳,这要
+依赖编译器特征,你也可以自己添加编译器特征到PEid_Sign.txt(怎么加?我想你看下就应该知道了,不多说了)
+
+对某些未知壳(相对上面的已知壳),可能能用未知壳脱壳选项搞定,它里面的原理也是用了编译器入口处信息
+
+我试验某壳时,发现它在解壳时申请很多内存,而又不释放,这里,你可以适当增加堆大小,我那个时候设到15Mbyte才搞定
+
+对mslrh壳,脱到抽OEP处就没有继续了,不过dump出来程序可以运行了,本写了过修复程序,我怕它跟编译器有关,这里就没有加这个功能了
+
+BTW:我是个菜鸟,刚接触脱壳不久,这个工具不一定好用,见谅!对这方面感兴趣可以加我ＱＱ：３５６８５９９，可谈技术，可论生活，还可瞎扯，
+千万不要找我是为了脱壳，我巨菜，现在连asprotect都还没有碰过呢，即时我会了，也不会干这种事
+
+											linxer
+											2007-06-21 01:30
+
+修改历史：
+ v0.12	1.对有IAT加密情况的，才进行IAT解密，避免了有时候不需要解密也去解密，导致脱后程序不能执行
+ 	2.支持文件拖拽功能
+ 	3.脱未知壳时，如果IAT加密了，请选上解密加密IAT项，进行IAT还原
+
+
+
+下面给出这个功能的能脱列表(本人调试过的)：
+
+
+upx 0.5x-3.00
+aspack 1.x--2.x
+PEcompact 0.90--1.76
+PEcompact 2.06--2.79
+NsPack
+nPack
+FSG 1.0--1.3 v1.31 v1.33 v2.0
+VGCrypt0.75
+expressor 1.0--1.5
+dxpack v0.86 v1.0
+!Epack v1.0 v1.4
+mew1.1
+packMan 1.0
+PEDiminisher 0.1
+pex 0.99
+petite v1.2 - v1.4
+petite v2.2
+petite v2.3
+winkript 1.0
+pklite32 1.1
+pepack 0.99 - 1.0
+pcshrinker 0.71
+wwpack32 1.0 - 1.2
+upack v0.10 - v0.32
+upack v0.33 - v0.399
+RLPack Basic Edition 1.11--1.18
+exe32pack v1.42
+kbys 0.22 0.28
+morphine v1.3 //以下三壳，没有解决dump问题
+morphine v1.6
+morphine v2.7
+yoda's protector v1.02
+yoda's protector v1.03.2
+yoda's crypt v1.2
+yoda's crypt v1.3
+EXE Stealth v2.72--v2.76
+bjfnt v1.2 - v1.3
+HidePE 1.0--1.1
+jdpack v1.01
+jdpack v2.0
+jdpack v2.13
+PEncrypt v3.1
+PEncrypt v4.0
+Stone's PE Crypt v1.13
+telock v0.42
+telock v0.51
+telock v0.60
+telock v0.70
+telock v0.71
+telock v0.80
+telock v0.90
+telock v0.92
+telock v0.95 v0.96 v0.98 v0.99
+ezip v1.0
+hmimys-packer v1.0
+jdprotect v0.9b
+lamecrypt
+UPolyX v0.51
+StealthPE 1.01
+StealthPE 2.2
+depack
+涛涛压缩器(跟kbys0.28一样)
+polyene 0.01
+DragonArmour
+EP Protector v0.3
+闪电壳(其实就是expressor)
+BeRoEXEPacker
+PackItBitch
+木马彩衣
+mkfpack
+anti007 v2.5 v2.6
+yzpack v1.1 v1.2 v2.0
+spack_method1 v1.0 v1.1 v1.2 v1.21
+spack_method2 v1.1 v1.2 v1.21
+xj1001
+xj1000
+xj看雪测试版
+xj1003
+xpal4
+仙剑-凄凉雪
+仙剑-望海潮
+mslrh0.31 v0.32
+[G!X]'s Protect(传说中的mslrh0.2??)
+
+=================================================================
